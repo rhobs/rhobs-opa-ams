@@ -34,6 +34,7 @@ ARG IMAGE_SUMMARY
 ARG IMAGE_OPENSHIFT_TAGS
 
 LABEL vendor="Red Hat, Inc." \
+    com.redhat.component="rhobs-opa-thanos" \
     name="$IMAGE_NAME" \
     maintainer="$IMAGE_MAINTAINER" \
     version="$IMAGE_VERSION" \
