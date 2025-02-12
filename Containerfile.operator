@@ -3,16 +3,19 @@
 
 FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:rhel_8_golang_1.22 as builder
 
-RUN apk add --update --no-cache ca-certificates tzdata git make bash && update-ca-certificates
+RUN dnf -y update && \
+dnf -y install ca-certificates tzdata git make bash && \
+update-ca-trust && \
+dnf clean all
 
 ADD . /opt
 WORKDIR /opt
 
-RUN git update-index --refresh; make opa-ams
+RUN git update-index --refresh; go mod vendor && make opa-ams
 
 FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /etc/ssl/certs/ca-bundle.crt /etc/ssl/certs/
 COPY --from=builder /opt/opa-ams /bin/opa-ams
 
 ARG BUILD_DATE
@@ -23,6 +26,7 @@ ARG DOCKERFILE_PATH
 LABEL vendor="Observatorium" \
     name="observatorium/opa-ams" \
     description="OPA-AMS proxy" \
+    com.redhat.component="observatorium/opa-ams" \
     io.k8s.display-name="observatorium/opa-ams" \
     io.k8s.description="OPA-AMS proxy" \
     maintainer="Observatorium <team-monitoring@redhat.com>" \
