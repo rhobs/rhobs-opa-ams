@@ -7,7 +7,7 @@ WORKDIR /opt
 
 RUN git update-index --refresh; make opa-ams
 
-FROM alpine:3.10 as runner
+FROM alpine:3.21 as runner
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /opt/opa-ams /bin/opa-ams
