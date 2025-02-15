@@ -275,7 +275,7 @@ spec:
         - name: name
           value: source-build-oci-ta
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-source-build-oci-ta:0.2@sha256:ac6c2141c21ef950dcb84dad5cd4d3a04fb758f82f9b5acc3612a584b4be5120
+          value: quay.io/konflux-ci/tekton-catalog/task-source-build-oci-ta:0.2@sha256:183b28fc7c3ca8bc81b00d695517cd2e0b7c31e13365bcfd7e3c758ce13c489c
         - name: kind
           value: task
         resolver: bundles
@@ -343,7 +343,7 @@ spec:
         - name: name
           value: ecosystem-cert-preflight-checks
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-ecosystem-cert-preflight-checks:0.1@sha256:df8a25a3431a70544172ed4844f9d0c6229d39130633960729f825a031a7dea9
+          value: quay.io/konflux-ci/tekton-catalog/task-ecosystem-cert-preflight-checks:0.2@sha256:2ad615f9b8141ed2e0b060ebda366ce43cf55a9dd7c98e2d93970ff328dca8b2
         - name: kind
           value: task
         resolver: bundles
@@ -434,7 +434,7 @@ spec:
         - name: name
           value: sast-coverity-check-oci-ta
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-sast-coverity-check-oci-ta:0.2@sha256:e765486b666ddd2fda3faa9e1ab92e0a1178492a4fdfed162cf2baf845311595
+          value: quay.io/konflux-ci/tekton-catalog/task-sast-coverity-check-oci-ta:0.2@sha256:e92c350e3d115783b65b6bb06e548524d918c740c1929465f347d413d91d72ff
         - name: kind
           value: task
         resolver: bundles
